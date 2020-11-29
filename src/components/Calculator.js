@@ -27,26 +27,18 @@ class Calculator extends Component {
         })
     }
 
+    //set operator to be used
     operator = (event) => {
         event.preventDefault()
         console.log('ADD FUNCTION FIRED')
         console.log('SET OPERATION TO --->',event.target.innerHTML)
 
         this.setState({
-            //count: parseInt(this.state.num1) + parseInt(this.state.num2),
             operation: event.target.innerHTML
         })
     }
 
-    subtract = (event) => {
-        event.preventDefault()
-        console.log('SUBTRACT FUNCTION FIRED')
-
-        this.setState({
-            count: parseInt(this.state.num1) - parseInt(this.state.num2)
-        })
-    }
-
+    //process mathematical operation
     mathOperation = (event) => {
         event.preventDefault()
         console.log('OPERATOR FIRED --->', this)
@@ -69,14 +61,17 @@ class Calculator extends Component {
             })
         }
     }
-
+    
+    //reset form
     reset = (event) => {
-        this.setState({
+        /*this.setState({
             count: 0,
             num1: 0,
             num2: 0,
             operation: ''
-        })
+        })*/
+
+        this.form.reset()
     }
 
     render(){
@@ -85,8 +80,8 @@ class Calculator extends Component {
             <div className='container'>
                 <h1>Add with React!</h1>
 
-                <div className='add'>
-                    <input type='text' 
+                <form id='calculator'>
+                    <input id='num1' type='text' 
                         placeholder='0'
                         onChange={(event) => this.updateNum1(event)}
                     />
@@ -96,19 +91,22 @@ class Calculator extends Component {
                     <button onClick={this.operator}>*</button>
                     <button onClick={this.operator}>/</button>
 
-                    <input type='text' 
+                    <input id='num2' type='text' 
                         placeholder='0'
                         onChange={(event) => this.updateNum2(event)}
                     />
 
                     <button onClick={this.mathOperation}> = </button>
-
+                    
                     <h3>{this.state.count}</h3>
 
                     <button onClick={this.reset}>Clear</button>
-                </div>
+                    
+                </form>
+                
+
             </div>
-      )
+        )
     }
   }
   
