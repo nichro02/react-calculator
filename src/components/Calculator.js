@@ -10,6 +10,8 @@ class Calculator extends Component {
         operation: ''
     }
 
+    /*
+    //NOT DRY CODE
     updateNum1 = (event) => {
         console.log('UPDATE num1 to', event.target.value)
         
@@ -24,6 +26,13 @@ class Calculator extends Component {
 
         this.setState({
             num2: event.target.value
+        })
+    }
+    */
+
+    setNum = (event, number) => {
+        this.setState({
+            [number]: event.target.value
         })
     }
 
@@ -83,7 +92,8 @@ class Calculator extends Component {
                 <form id='calculator'>
                     <input id='num1' type='text' 
                         placeholder='0'
-                        onChange={(event) => this.updateNum1(event)}
+                        //onChange={(event) => this.updateNum1(event)}
+                        onChange={(event) => this.setNum(event, 'num1')}
                     />
                     
                     <button onClick={this.operator}>+</button>
@@ -93,7 +103,8 @@ class Calculator extends Component {
 
                     <input id='num2' type='text' 
                         placeholder='0'
-                        onChange={(event) => this.updateNum2(event)}
+                        //onChange={(event) => this.updateNum2(event)}
+                        onChange={(event) => this.setNum(event, 'num2')}
                     />
 
                     <button onClick={this.mathOperation}> = </button>
